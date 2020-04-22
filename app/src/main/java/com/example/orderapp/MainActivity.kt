@@ -47,11 +47,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun save(view: View) {
-        databaseHelper.addOrder(Order(clientTxt.text.toString(), dishTxt.text.toString()))
+        databaseHelper.addOrder(Order(wordToAddTxt.text.toString(), wordToAddTxt.text.toString()))
         wordToAddTxt.setText("")
         Toast.makeText(this@MainActivity, "Stored Successfully!", Toast.LENGTH_SHORT).show()
 
-        orders = databaseHelper.getAllOrders() as MutableList<Order>
+        orders = databaseHelper.getAllOrders()
       adapter.updateOrders(orders)
     }
 }

@@ -19,8 +19,8 @@ class MyDBHandler(
     }
 
     override fun onCreate(db: SQLiteDatabase) {
-        val CREATE_WORDS_TABLE = ("CREATE TABLE $TABLE_ORDERS ($COLUMN_ID INTEGER PRIMARY KEY,$COLUMN_CLIENT  CLIENT,$COLUMN_DISH  DISH )")
-        db.execSQL(CREATE_WORDS_TABLE)
+        val CREATE_ORDERS_TABLE = ("CREATE TABLE $TABLE_ORDERS ($COLUMN_ID INTEGER PRIMARY KEY,$COLUMN_CLIENT  CLIENT,$COLUMN_DISH  DISH )")
+        db.execSQL(CREATE_ORDERS_TABLE)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
@@ -39,7 +39,7 @@ class MyDBHandler(
         db.close()
     }
 
-    fun getAllOrders(): List<Order> {
+    fun getAllOrders(): MutableList<Order> {
         val query =
             "SELECT * FROM $TABLE_ORDERS"
 
@@ -47,7 +47,7 @@ class MyDBHandler(
 
         val cursor = db.rawQuery(query, null )
 
-        val orders: List<Order> = listOf()
+        val orders: MutableList<Order> = mutableListOf()
 
         if (cursor.moveToFirst()) {
             while (!cursor.isAfterLast) {

@@ -27,7 +27,6 @@ class OrderListAdapter(private var list: List<Order>, private val clickListener:
 
     fun updateOrders(orders:MutableList<Order>) {
      //list.clear()
-
         list = orders
         // to refresh the ui
         notifyDataSetChanged()

@@ -13,7 +13,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="28dp"
-        android:text="word_to_add"
+        android:text="Order"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/wordToAddTxt"
         app:layout_constraintTop_toTopOf="parent" />
