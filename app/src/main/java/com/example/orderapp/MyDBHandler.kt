@@ -49,10 +49,10 @@ class MyDBHandler(
 
         val orders: MutableList<Order> = mutableListOf()
 
-        if (cursor.moveToFirst()) {
-            while (!cursor.isAfterLast) {
-                orders.get(index = 1)
-
+        if(cursor.moveToFirst()) {
+            while(!cursor.isAfterLast) {
+                orders.add(Order(cursor.getString(1), cursor.getString(2)))
+                cursor.moveToNext()
             }
         }
         db.close()

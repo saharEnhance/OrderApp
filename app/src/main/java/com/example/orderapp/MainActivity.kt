@@ -15,8 +15,6 @@ class MainActivity : AppCompatActivity() {
     // private var  orders : List<Order> = listOf()
     private var orders: MutableList<Order> = mutableListOf()
 
-    private lateinit var viewAdapter: RecyclerView.Adapter<*>
-    private lateinit var viewManager: RecyclerView.LayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,27 +26,25 @@ class MainActivity : AppCompatActivity() {
 
     private fun initRecyclerView() {
 
-
-
         orderList.layoutManager = LinearLayoutManager(this)
         val testData = createTestData()
 
         // Create the PartAdapter
         // 1st parameter: our generated testData
         // 2nd parameter: item click handler function (implemented below) as function parameter
-        adapter = OrderListAdapter(testData) { order : String -> partItemClicked(order) }
+        adapter = OrderListAdapter(testData as MutableList<Order>) { order : String -> partItemClicked(order) }
         orderList.adapter = adapter
     }
 
-    private fun createTestData():  List<Order> = mutableListOf(Order("pizza", "John Doe"))
+    private fun createTestData():  List<Order> = mutableListOf()
 
-    private fun partItemClicked(word: String) {
-        Toast.makeText(this, "Clicked: $word", Toast.LENGTH_LONG).show()
+    private fun partItemClicked(order: String) {
+        Toast.makeText(this, "Clicked: $order", Toast.LENGTH_LONG).show()
     }
 
     fun save(view: View) {
-        databaseHelper.addOrder(Order(wordToAddTxt.text.toString(), wordToAddTxt.text.toString()))
-        wordToAddTxt.setText("")
+        databaseHelper.addOrder(Order(clientToAddTxt.text.toString(), dishToAddTxt.text.toString()))
+        //clientToAddTxt.setText("")
         Toast.makeText(this@MainActivity, "Stored Successfully!", Toast.LENGTH_SHORT).show()
 
         orders = databaseHelper.getAllOrders()

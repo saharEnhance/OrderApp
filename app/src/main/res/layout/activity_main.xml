@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <EditText
+        android:id="@+id/clientToAddTxt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sixteendp"
+        android:layout_marginEnd="@dimen/sixteendp"
+        android:layout_marginRight="@dimen/sixteendp"
+        android:text="type name..."
+        app:layout_constraintEnd_toStartOf="@+id/saveBtn"
+        app:layout_constraintStart_toEndOf="@+id/wordToAdd"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/wordToAdd"
         android:layout_width="0dp"
@@ -15,19 +27,19 @@
         android:layout_marginTop="28dp"
         android:text="Order"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/wordToAddTxt"
+        app:layout_constraintEnd_toStartOf="@+id/dishToAddTxt"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/wordToAddTxt"
+        android:id="@+id/dishToAddTxt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="92dp"
         android:layout_marginEnd="@dimen/sixteendp"
         android:layout_marginRight="@dimen/sixteendp"
-        android:layout_marginTop="@dimen/sixteendp"
-        android:text="word"
-        app:layout_constraintStart_toEndOf="@+id/wordToAdd"
+        android:text="type food..."
         app:layout_constraintEnd_toStartOf="@+id/saveBtn"
+        app:layout_constraintStart_toEndOf="@+id/wordToAdd"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -40,16 +52,17 @@
         android:text="Save"
         android:onClick="save"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/wordToAddTxt"
+        app:layout_constraintStart_toEndOf="@+id/dishToAddTxt"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/orderList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/sixteendp"
-        app:layout_constraintTop_toBottomOf="@+id/wordToAdd"
+        android:layout_marginTop="196dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wordToAdd" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

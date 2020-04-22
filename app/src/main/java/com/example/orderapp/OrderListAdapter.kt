@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class OrderListAdapter(private var list: List<Order>, private val clickListener: (String) -> Unit)
+class OrderListAdapter(private var list: MutableList<Order>, private val clickListener: (String) -> Unit)
     : RecyclerView.Adapter<OrderViewHolder>() {
 
 
@@ -26,7 +26,7 @@ class OrderListAdapter(private var list: List<Order>, private val clickListener:
     }
 
     fun updateOrders(orders:MutableList<Order>) {
-     //list.clear()
+     list.clear()
         list = orders
         // to refresh the ui
         notifyDataSetChanged()
