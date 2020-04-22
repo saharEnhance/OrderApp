@@ -4,6 +4,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_order.*
 import kotlinx.android.synthetic.main.activity_person.*
 
 class MainActivity : AppCompatActivity() {
@@ -39,11 +41,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun save(view: View) {
-        databaseHelper.addPerson(Order(nameTxt.text.toString(), ageTxt.text.toString()))
+        databaseHelper.addOrder(Order(clientTxt.text.toString(), dishTxt.text.toString()))
         wordToAddTxt.setText("")
         Toast.makeText(this@MainActivity, "Stored Successfully!", Toast.LENGTH_SHORT).show()
 
-        orders = databaseHelper.getAllPeople()
+        orders = databaseHelper.getAllOrders()
        // adapter.updatePeople()
     }
 }
