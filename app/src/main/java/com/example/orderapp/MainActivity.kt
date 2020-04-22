@@ -25,14 +25,14 @@ class MainActivity : AppCompatActivity() {
     private fun initRecyclerView() {
 
 
-       orders.layoutManager = LinearLayoutManager(this)
+       //orders.layoutManager = LinearLayoutManager(this)
         val testData = createTestData()
 
         // Create the PartAdapter
         // 1st parameter: our generated testData
         // 2nd parameter: item click handler function (implemented below) as function parameter
         adapter = OrderListAdapter(orders) { order : String -> partItemClicked(order) }
-        orders.adapter = adapter
+        //orders.adapter = adapter
     }
 
     private fun createTestData():  List<Order> = mutableListOf(Order("pizza", "John Doe"))
@@ -47,6 +47,6 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this@MainActivity, "Stored Successfully!", Toast.LENGTH_SHORT).show()
 
         orders = databaseHelper.getAllOrders() as MutableList<Order>
-      adapter.updatePeople()
+      adapter.updateOrders(orders)
     }
 }

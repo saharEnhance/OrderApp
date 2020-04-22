@@ -1,5 +1,6 @@
 package com.example.orderapp
 
+import android.app.Person
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -23,14 +24,8 @@ class OrderListAdapter(private var list: List<Order>, private val clickListener:
         holder.bind(list[position], clickListener)
     }
 
- /*   fun updateWords(words: MutableList<Word>) {
-        list.clear()
-        list = words
-        // to refresh the ui
-        notifyDataSetChanged()
-    }*/
-    fun updatePeople() {
-      // list.clear()
+    fun updateOrders(orders:List<Order>) {
+      //list.clear()
 
         list = orders
         // to refresh the ui
