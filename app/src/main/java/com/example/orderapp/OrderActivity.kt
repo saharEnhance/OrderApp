@@ -10,7 +10,7 @@ class OrderActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order)
-        val order: Order? = intent?.getParcelableExtra("person")
+        val order: Order? = intent?.getParcelableExtra("ordering")
         clientTxt.text = order?.client.toString()
         dishTxt.text = order?.dish.toString()
     }

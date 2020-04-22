@@ -50,7 +50,7 @@ class MyDBHandler(context: Context, name: String?,
 
         if (cursor.moveToFirst()) {
             while (!cursor.isAfterLast) {
-                orders.get(1)
+                orders.get(index = 1)
 
             }
         }

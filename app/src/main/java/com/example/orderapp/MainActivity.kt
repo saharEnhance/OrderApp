@@ -6,13 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_order.*
-import kotlinx.android.synthetic.main.activity_person.*
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var databaseHelper: MyDBHandler
-    lateinit var adapter: OrderListAdapter
-    private var  orders : List<Order> = listOf()
+    private lateinit var databaseHelper: MyDBHandler
+    private lateinit var adapter: OrderListAdapter
+     private var  orders : List<Order> = listOf()
+    //private var orders: MutableList<Order> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,17 +24,18 @@ class MainActivity : AppCompatActivity() {
 
     private fun initRecyclerView() {
 
-        wordList.layoutManager = LinearLayoutManager(this)
+
+       orders.layoutManager = LinearLayoutManager(this)
         val testData = createTestData()
 
         // Create the PartAdapter
         // 1st parameter: our generated testData
         // 2nd parameter: item click handler function (implemented below) as function parameter
-        adapter = OrderListAdapter(orders) { person : String -> partItemClicked(person) }
-        wordList.adapter = adapter
+        adapter = OrderListAdapter(orders) { order : String -> partItemClicked(order) }
+        orders.adapter = adapter
     }
 
-    private fun createTestData(): MutableList<Word> = mutableListOf(Word("word1"))
+    private fun createTestData():  List<Order> = mutableListOf(Order("pizza", "John Doe"))
 
     private fun partItemClicked(word: String) {
         Toast.makeText(this, "Clicked: $word", Toast.LENGTH_LONG).show()
@@ -45,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         wordToAddTxt.setText("")
         Toast.makeText(this@MainActivity, "Stored Successfully!", Toast.LENGTH_SHORT).show()
 
-        orders = databaseHelper.getAllOrders()
-       // adapter.updatePeople()
+        orders = databaseHelper.getAllOrders() as MutableList<Order>
+      adapter.updatePeople()
     }
 }

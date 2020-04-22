@@ -29,8 +29,8 @@ class OrderListAdapter(private var list: List<Order>, private val clickListener:
         // to refresh the ui
         notifyDataSetChanged()
     }*/
-    fun updatePeople(orders: List<Order>) {
-       //list.clear()
+    fun updatePeople() {
+      // list.clear()
 
         list = orders
         // to refresh the ui
