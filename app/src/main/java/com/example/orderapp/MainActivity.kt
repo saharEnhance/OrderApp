@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_order.*
 
@@ -11,8 +12,11 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var databaseHelper: MyDBHandler
     private lateinit var adapter: OrderListAdapter
-     private var  orders : List<Order> = listOf()
-    //private var orders: MutableList<Order> = mutableListOf()
+    // private var  orders : List<Order> = listOf()
+    private var orders: MutableList<Order> = mutableListOf()
+
+    private lateinit var viewAdapter: RecyclerView.Adapter<*>
+    private lateinit var viewManager: RecyclerView.LayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,14 +29,15 @@ class MainActivity : AppCompatActivity() {
     private fun initRecyclerView() {
 
 
-       //orders.layoutManager = LinearLayoutManager(this)
+
+        orderList.layoutManager = LinearLayoutManager(this)
         val testData = createTestData()
 
         // Create the PartAdapter
         // 1st parameter: our generated testData
         // 2nd parameter: item click handler function (implemented below) as function parameter
-        adapter = OrderListAdapter(orders) { order : String -> partItemClicked(order) }
-        //orders.adapter = adapter
+        adapter = OrderListAdapter(testData) { order : String -> partItemClicked(order) }
+        orderList.adapter = adapter
     }
 
     private fun createTestData():  List<Order> = mutableListOf(Order("pizza", "John Doe"))

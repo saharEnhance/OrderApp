@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 class OrderListAdapter(private var list: List<Order>, private val clickListener: (String) -> Unit)
     : RecyclerView.Adapter<OrderViewHolder>() {
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderViewHolder {
         // LayoutInflater: takes ID from layout defined in XML.
         // Instantiates the layout XML into corresponding View objects.
@@ -24,8 +25,8 @@ class OrderListAdapter(private var list: List<Order>, private val clickListener:
         holder.bind(list[position], clickListener)
     }
 
-    fun updateOrders(orders:List<Order>) {
-      //list.clear()
+    fun updateOrders(orders:MutableList<Order>) {
+     //list.clear()
 
         list = orders
         // to refresh the ui
