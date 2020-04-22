@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.activity_person.*
 class MainActivity : AppCompatActivity() {
 
     lateinit var databaseHelper: MyDBHandler
-    lateinit var adapter: WordListAdapter
+    lateinit var adapter: OrderListAdapter
     private var  orders : List<Order> = listOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,13 +21,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initRecyclerView() {
+
         wordList.layoutManager = LinearLayoutManager(this)
         val testData = createTestData()
 
         // Create the PartAdapter
         // 1st parameter: our generated testData
         // 2nd parameter: item click handler function (implemented below) as function parameter
-        adapter = WordListAdapter(orders) { person : String -> partItemClicked(person) }
+        adapter = OrderListAdapter(orders) { person : String -> partItemClicked(person) }
         wordList.adapter = adapter
     }
 
